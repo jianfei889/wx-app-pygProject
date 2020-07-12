@@ -1,0 +1,29 @@
+@import "./style/iconfont.wxss";
+
+/* 在小程序中，不支持通配符  *  */
+
+page,view,text,swiper,swiper-item,image,navigator{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* 主题颜色 通过变量实现 less实现  */
+
+page{
+    /* 定义主题颜色 */
+    --themeColor:#eb4452;
+    /* 定义统一字体大小，假设设计稿 大小是 375px */
+    /* 1px = 2rpx */
+    /* 14px = 28rpx */
+
+    font-size: 28rpx;
+
+
+}
+
+
+
+
+
+

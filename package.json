@@ -1,0 +1,15 @@
+{
+  "name": "wx-app-project",
+  "version": "1.0.0",
+  "description": "1. index的楼层的图片样式中，这里的vm失效， height: (386/232)*33vm;\r         所以换成了：height: 208rpx;  也就是第一张图的高度换成后四张图的rpx高度.\r         后期解决下，vm为什么不行的。",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
