@@ -1,1 +1,55 @@
-/* pages/catagory/catagory.wxss */
+page {
+  height: 100%;
+}
+.cates {
+  height: 100%;
+}
+.cates .cates_container {
+  height: calc( 100vh - 90rpx );
+  display: flex;
+}
+.cates .cates_container .left_menu {
+  flex: 2;
+  border-right: 2rpx solid #eee;
+  background-color: #f7f0f0;
+}
+.cates .cates_container .left_menu .menu_item {
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+}
+.cates .cates_container .left_menu .active {
+  color: var(--themeColor);
+}
+.cates .cates_container .right_content {
+  flex: 5;
+}
+.cates .cates_container .right_content .goods_group .goods_title {
+  padding-top: 15rpx;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.cates .cates_container .right_content .goods_group .goods_title:before {
+  content: "/";
+  margin-right: 3rpx;
+}
+.cates .cates_container .right_content .goods_group .goods_title:after {
+  content: "/";
+  margin-left: 3rpx;
+}
+.cates .cates_container .right_content .goods_group .goods_list {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 5rpx solid #EEE;
+  margin-bottom: 10rpx;
+}
+.cates .cates_container .right_content .goods_group .goods_list navigator {
+  width: 33.3%;
+  padding: 10rpx 10rpx;
+}
+.cates .cates_container .right_content .goods_group .goods_list navigator .goods_name {
+  text-align: center;
+}

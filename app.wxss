@@ -9,7 +9,6 @@ page,view,text,swiper,swiper-item,image,navigator{
 }
 
 /* 主题颜色 通过变量实现 less实现  */
-
 page{
     /* 定义主题颜色 */
     --themeColor:#eb4452;
@@ -23,7 +22,9 @@ page{
 }
 
 
-
+image{
+    width: 100%;
+}
 
 
 
