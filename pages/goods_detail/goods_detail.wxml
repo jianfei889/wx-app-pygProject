@@ -1,2 +1,33 @@
-<!--pages/goods_detail/goods_detail.wxml-->
-<text>pages/goods_detail/goods_detail.wxml</text>
+<view class="detail_swiper">
+
+    <!-- 轮播图 -->
+    <swiper class="" indicator-dots   autoplay circular interval="1000" >
+        <swiper-item 
+            wx:for="{{goodsObj.pics}}"
+            wx:key="pics_id"
+        >
+            <image class="" src="{{item.pics_mid}}" mode="widthFix" ></image>
+        </swiper-item>
+    </swiper>
+
+    <view class="goods_price">￥{{goodsObj.goods_price}}</view>
+
+    <view class="goods_name_row">
+        <view class="goods_name">{{goodsObj.goods_name}}</view>
+        <view class="goods_collect">
+            <!-- <view class="afler" > |  </view> -->
+            <text class="iconfont icon-shoucang1" ></text>
+            <view class="collect_text">收藏</view>
+        </view>
+    </view>
+
+    <view class="goods_info">
+        <view class="info_title">图文详情</view>
+        <!-- 富文本标签。Vue中用v-html处理,wx用rich-text处理 -->
+        <rich-text class="info_content" nodes="{{goodsObj.goods_introduce}}" ></rich-text>
+    </view>
+
+</view>
+
+
+

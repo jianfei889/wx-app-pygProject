@@ -1,2 +1,31 @@
-<!--pages/goods_list/goods_list.wxml-->
-<text>pages/goods_list/goods_list.wxml</text>
+<view class="goods_list_index">
+
+    <searchInput></searchInput>
+    <!-- 监听自定义事件 -->
+    <tabs tabs="{{tabs}}" bindtabsItemChange="tabsItemChange">
+        <block wx:if="{{tabs[0].isActive}}">
+            <view class="first_tab">
+                <navigator class="goods_item" 
+                    wx:for="{{goodsList}}"
+                    wx:key="goods_id"
+                    url="/pages/goods_detail/goods_detail?goods_id={{item.goods_id}}"
+                >
+                    <!-- 左侧商品图片 -->
+                    <view class="goods_img">
+                        <image  src="{{item.goods_small_logo?item.goods_small_logo:'//bpic.588ku.com/element_origin_min_pic/19/04/09/dc74f66dc65ff886382e61d0eec5ddd4.jpg'}}" mode="widthFix"> </image>
+                    </view>
+
+                    <!-- 右侧商品介绍 -->
+                    <view class="goods_info">
+                        <view class="goods_name">{{item.goods_name}}</view>
+                        <view class="goods_price">￥{{item.goods_price}}</view>
+                    </view>
+
+                </navigator>
+            </view> 
+        </block>
+        <block wx:elif="{{tabs[1].isActive}}"> 1 </block>
+        <block wx:elif="{{tabs[2].isActive}}"> 2 </block>
+    </tabs>
+
+</view>

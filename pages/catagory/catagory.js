@@ -1,4 +1,6 @@
 import { request } from "../../request/index.js"
+//这个文件只引用即可，不用使用的。具体待查
+import  regeneratorRuntime  from "../../lib/runtime/runtime.js"
 
 // pages/catagory/catagory.js
 Page({
@@ -18,8 +20,6 @@ Page({
       * 生命周期函数--监听页面加载
       */
      onLoad: function (options) {
-
-
 
           //缓存技术--开始
 
@@ -70,8 +70,8 @@ Page({
      },
 
 
-     //获取左侧和右侧菜单栏的内容
-     getCates(){
+     //获取左侧和右侧菜单栏的内容,es6的promise方法
+   /*   getCates(){
           request({
                url:"https://api-hmugo-web.itheima.net/api/public/v1/categories"
           })
@@ -98,7 +98,41 @@ Page({
 
           })
 
+     }, */
+
+
+     //获取左侧和右侧菜单栏的内容，es7的async方法
+     async getCates(){
+         
+          //1. 使用ES7 的async、await 来发送请求
+          const  res = await request({url:"https://api-hmugo-web.itheima.net/api/public/v1/categories"})
+
+          this.cates=res.data.message
+
+          //把接口数据存入到本地存储中
+          wx.setStorageSync("cates", {time:Date.now(),data:this.cates});
+
+
+          //构造左侧的菜单数据
+          let leftMenuList = this.cates.map(v=>v.cat_name);
+          
+          //构造右侧的商品数据
+          //这里的cates[0]表示获取第一个索引的数据
+          let rightContent = this.cates[0].children
+
+          //设置左右两侧的数据
+          this.setData({
+               leftMenuList,
+               rightContent
+          })
+
+
      },
+
+
+
+
+
 
      //左侧菜单栏的点击事件
      itemTap(e){

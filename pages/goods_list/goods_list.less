@@ -1,0 +1,49 @@
+.first_tab{
+
+    .goods_item{
+        display: flex;
+
+        .goods_img{
+            flex: 1;
+            padding: 10rpx 18rpx;;
+            
+            image{
+                // width: 222rpx;
+                width: 100%;
+            }
+        }
+    
+        .goods_info{
+            flex:2;
+            // position: relative;
+            padding: 0 10rpx;
+            //伸缩盒子，对接下来的两行样式有效
+            display: flex;
+            //改变主轴方向，（弯曲方向：列）
+            flex-direction: column;
+            // 按照上下两行平行排列
+            justify-content: space-around;
+    
+            .goods_name{
+                font-weight: bolder;
+                text-indent:1em;
+               
+
+                //以下四行为只保留两行的文字内容，其他多的就隐藏
+                display: -webkit-box;
+                overflow: hidden;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+            }
+    
+            .goods_price{
+                color: red;
+                font-weight: bolder;
+                font: 30px;
+                // position: absolute;
+                // bottom: 10rpx;
+            }
+    
+        }
+    }
+}
