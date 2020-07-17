@@ -1,17 +1,25 @@
-<view class="detail_swiper">
-
+   
     <!-- 轮播图 -->
-    <swiper class="" indicator-dots   autoplay circular interval="1000" >
-        <swiper-item 
-            wx:for="{{goodsObj.pics}}"
-            wx:key="pics_id"
-        >
-            <image class="" src="{{item.pics_mid}}" mode="widthFix" ></image>
-        </swiper-item>
-    </swiper>
+    <view class="detail_swiper">
 
+        <!-- 轮播图 -->
+        <swiper class="" indicator-dots   autoplay circular interval="3000" >
+            <swiper-item 
+                wx:for="{{goodsObj.pics}}"
+                wx:key="pics_id"
+                bindtap="previewImage"
+                data-url="{{item.pics_mid}}"
+            >
+                <image class="" src="{{item.pics_mid}}" mode="widthFix" ></image>
+            </swiper-item>
+        </swiper>
+
+    </view>
+
+    <!-- 价格 -->
     <view class="goods_price">￥{{goodsObj.goods_price}}</view>
 
+    <!-- 商品介绍 -->
     <view class="goods_name_row">
         <view class="goods_name">{{goodsObj.goods_name}}</view>
         <view class="goods_collect">
@@ -21,13 +29,49 @@
         </view>
     </view>
 
+    <!-- //商品图文信息介绍   富文本 -->
     <view class="goods_info">
         <view class="info_title">图文详情</view>
         <!-- 富文本标签。Vue中用v-html处理,wx用rich-text处理 -->
         <rich-text class="info_content" nodes="{{goodsObj.goods_introduce}}" ></rich-text>
     </view>
 
-</view>
+
+    <!-- 底部工具栏 -->
+    <view class="bottom_tool">
+        <view class="tool_item " hover-class="hove_bgc">
+            <view class="iconfont icon-kefu"></view>
+            <view >客服</view>
+            <button open-type="contact" ></button>
+        </view>
+
+        
+        <view class="tool_item " hover-class="hove_bgc">
+            <view class="iconfont icon-fenxiang"></view>
+            <view >分享</view>
+            <button open-type="share" ></button>
+        </view>
+
+        <!-- 注意跳转的页面是不是属于 tabbar 页面，然后tabbar页面需要指定跳转格式 -->
+        <navigator url="/pages/cart/cart" open-type="switchTab" class="tool_item" hover-class="hove_bgc">
+            <view class="iconfont icon-gouwuche"></view>    
+            <view >购物车</view>
+        </navigator>
+
+        <view class="tool_item btn-cart" bindtap="cartAdd">
+            <view>加入购物车</view>
+        </view>
+        
+        <view class="tool_item btn-buy" >
+            <view hover-class="hove_bgc">立即购买</view>
+        </view>
+
+
+    </view>
+    
+
+
+
 
 
 

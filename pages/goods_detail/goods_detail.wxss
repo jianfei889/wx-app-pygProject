@@ -1,3 +1,6 @@
+page {
+  padding-bottom: 90rpx;
+}
 .detail_swiper swiper {
   height: 61vw;
   text-align: center;
@@ -27,7 +30,7 @@
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 4;
 }
 .goods_name_row .goods_collect {
   flex: 1;
@@ -38,4 +41,47 @@
   font-size: 33rpx;
   font-weight: bolder;
   padding: 21rpx 16rpx;
+}
+.bottom_tool {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90rpx;
+  border-top: 2rpx solid #aaa4a4;
+  background-color: #f7f2f2;
+  display: flex;
+}
+.bottom_tool .tool_item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.bottom_tool .tool_item button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.bottom_tool .btn-cart {
+  flex: 2;
+  color: white;
+  background-color: #ffa500;
+  font-weight: 520;
+  font-size: 30rpx;
+}
+.bottom_tool .btn-buy {
+  flex: 2;
+  color: white;
+  background-color: #ff0000;
+  font-weight: 520;
+  font-size: 30rpx;
+}
+.bottom_tool .hove_bgc {
+  background-color: #fff;
 }

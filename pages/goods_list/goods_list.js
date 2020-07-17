@@ -79,7 +79,7 @@ Page({
      async getGoodsList(){
           const res = await request({
                url:"https://api-hmugo-web.itheima.net/api/public/v1/goods/search",
-               data:this.queryParams
+               data:this.queryParams//链接要传递的参数
           })
           // console.log(res.data.message);
           const total = res.data.message.total

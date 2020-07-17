@@ -1,3 +1,9 @@
+page{
+    //在  goods_info  里面加上样式也是有效的
+    padding-bottom: 90rpx;
+}
+
+//轮播图
 .detail_swiper{
 
     swiper{
@@ -11,7 +17,7 @@
     }
 }
 
-
+//价格
 .goods_price{
     font-size: 30rpx;
     font-weight: bolder;
@@ -20,6 +26,7 @@
 
 }
 
+//商品介绍
 .goods_name_row{
     display: flex;
     border-top:5rpx solid #dedede;
@@ -38,7 +45,7 @@
         display: -webkit-box;
         overflow: hidden;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 4;
     }
 
     .goods_collect{
@@ -62,7 +69,7 @@
     
 }
 
-
+//图文详情
 .goods_info{
 
     .info_title{
@@ -79,8 +86,61 @@
     }
 }
 
+//底部工具栏
+.bottom_tool{
+    position: fixed;
+    left:0;
+    bottom:0;
+    width: 100%;
+    height: 90rpx;
+    border-top: 2rpx solid rgb(170, 164, 164);
+    background-color: #f7f2f2;
+    display: flex;
 
+    .tool_item{
 
+        flex: 1;
+        display: flex;
+        flex-direction: column;//改变主轴方向为上下方向
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        button{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+
+        }
+    }
+
+    .btn-cart{
+        flex:2;    
+        // display: flex;
+
+        color:white;
+        background-color:#ffa500;
+        font-weight: 520;
+        font-size:30rpx;
+    }
+
+    .btn-buy{
+        flex:2;    
+        // display: flex;111111111
+
+        color:white;
+        background-color: #ff0000;
+        font-weight: 520;
+        font-size:30rpx;
+    }
+
+    .hove_bgc{
+        background-color: #fff;
+    }
+}
 
 
 
