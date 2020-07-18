@@ -55,7 +55,7 @@ Page({
      //点击图片 放大预览
      previewImage(e){
           
-          //1. 先构造要预览的图片数组,map()构造新数组，遍历数组，拿到想要的，v是每个 元素
+          //1. 先构造要预览的图片数组,map()构造新数组，遍历数组，拿到想要的，v是每个元素，v.pics_mid是每个图片的链接
           const urls = this.goodsInfo.pics.map(v=>v.pics_mid)
           
           //2. 点击之后，接收用户点击的图片的索引。（点击哪张图片就放大预览哪张图片）
@@ -69,6 +69,8 @@ Page({
 
      },
      
+
+     //添加商品时，加入了两个key键,num和check，一个用来记录数量，一个记录选中状态
      cartAdd(){
           //1. 获取缓存数据中的购物车数组,(没有就会新建)
                //最后的  ||[]  是将格式转换为一个数组格式，确保该变量是一个数组格式
@@ -78,9 +80,11 @@ Page({
           let index = cart.findIndex(v=>v.goods_id===this.goodsInfo.goods_id)
 
           if(index===-1){
-               //3. 不存在，第一次添加
+               //3. 在goodsInfo属性下添加一个key值，如果不存在则新建
                this.goodsInfo.num=1
+               this.goodsInfo.check=true
                cart.push(this.goodsInfo)
+
           }else{
                //4. 存在时，执行 num++
                cart[index].num++

@@ -21,25 +21,36 @@ Page({
                // 1. 获取本地存储中的数据
                // 2. 把数据设置给 data 中的一个变量
           const cart = wx.getStorageSync("cart")||[];//购物车的显示.当cart为空时是一个空数组
-
-          this.setData({//因为cart参数没有设置  adress,所以再设值. 注意这里的adress需要大括号
-               address
-          })
           
-          this.setCart(cart)
+          
+          //全选：计算全选
+          //every()，数组方法，可以遍历，会接收一个回调函数，需要确保每个回调函数都返回true 的情况下 every() 才会返回 true.  这里是在cart数据下遍历
+          let allCheck = cart.length?cart.every(v=>v.check):false//有数据就是true,  true时eveny()就返回true，然后就能全选。否则就不全选
 
-         /*  // 2. 把数据设置给 data 中的一个变量
+          //总价格，总数量
+          let totalPrice = 0;
+          let totalNum = 0;
+
+          cart.forEach(v => {
+               if(v.check){//如果是在选中状态下的话
+                    totalPrice+=v.num*v.goods_price,
+                    totalNum+= v.num
+               }
+          });
+
+          allCheck = cart.length!=0?allCheck:false
+
+          // 2. 把数据设置给 data 中的一个变量
           this.setData({
                address,
                cart,
                allCheck,
                totalPrice,
                totalNum
-          }) */
+          })
+
 
      },
-
-
 
      //原生获取收获地址的方法。
      yuanSheng_getAddress(){
@@ -133,34 +144,26 @@ Page({
     
      },
 
-
      // 商品选中事件，计算全选、总价、总数量
      itemChange(e){
+
           //1. 获取被修改的商品 id 
           const goods_id = e.currentTarget.dataset.id
           //2. 获取购物车数组
           let {cart} = this.data
-          
           // 3. 找到被修改的商品对象 的 索引
           let index = cart.findIndex(v=>v.goods_id===goods_id)
           //4.按下按钮时，将状态取反
           cart[index].check = !cart[index].check
-         
-          this.setCart(cart)
-
-     },
 
 
-
-     //设置购物车的状态，封装总价格，总数量，全选与否的计算方法
-     setCart(cart){
-               
-              
+          wx.setStorageSync("cart", cart);
+          
+          //5，6. 购物车数据重新设置回 缓存和data
 
                //全选：计算全选
                //every()，数组方法，可以遍历，会接收一个回调函数，需要确保每个回调函数都返回true 的情况下 every() 才会返回 true.  这里是在cart数据下遍历
-               // let allCheck = cart.length?cart.every(v=>v.check):false//有数据就是true,  true时eveny()就返回true，然后就能全选。否则就不全选
-               let allCheck =true//有数据就是true,  true时eveny()就返回true，然后就能全选。否则就不全选
+               var allCheck = cart.length?cart.every(v=>v.check):false//有数据就是true,  true时eveny()就返回true，然后就能全选。否则就不全选
 
                //总价格，总数量
                let totalPrice = 0;
@@ -175,8 +178,8 @@ Page({
                     }
                });
 
-          allCheck = cart.length!=0?allCheck:false
-
+               allCheck = cart.length!=0?allCheck:false
+ 
            //5，6. 购物车数据重新设置回 缓存和data
            this.setData({
                cart,
@@ -185,7 +188,7 @@ Page({
                allCheck
           })
           
-          wx.setStorageSync("cart", cart);
+          
 
 
      }

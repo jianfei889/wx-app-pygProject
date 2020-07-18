@@ -32,10 +32,11 @@ page {
 .cart_content .cart_main {
   padding-top: 18rpx;
   padding-bottom: 18rpx;
-  border-bottom: 1px solid #cfcaca;
 }
 .cart_content .cart_main .cart_item {
   display: flex;
+  border-bottom: 1px solid #cfcaca;
+  padding: 8rpx 5rpx;
 }
 .cart_content .cart_main .cart_item .checkbox {
   flex: 1;
@@ -56,7 +57,7 @@ page {
 }
 .cart_content .cart_main .cart_item .info_row {
   flex: 5;
-  margin-left: -18rpx;
+  margin-left: -58rpx;
 }
 .cart_content .cart_main .cart_item .info_row .detail {
   word-break: break-all;
@@ -73,7 +74,7 @@ page {
 .cart_content .cart_main .cart_item .info_row .price_num .price {
   flex: 1;
   color: red;
-  font-size: 45rpx;
+  font-size: 40rpx;
 }
 .cart_content .cart_main .cart_item .info_row .price_num .num {
   flex: 1;
@@ -110,6 +111,7 @@ page {
   flex: 5;
   text-align: right;
   padding-right: 18rpx;
+  padding-bottom: 8rpx;
 }
 .footer_tool .price_wrap .total_price .allPrice {
   color: red;
