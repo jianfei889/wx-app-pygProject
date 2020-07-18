@@ -1,4 +1,4 @@
-import {getSetting,chooseAddress,openSetting} from "../../utils/asyncWx.js"
+import {getSetting,chooseAddress,openSetting,showModal,showToast} from "../../utils/asyncWx.js"
 import  regeneratorRuntime  from "../../lib/runtime/runtime.js"  //貌似现在不需要引入，只需要把微信开发助手的增强编译设置打开就行
 
 
@@ -38,6 +38,8 @@ Page({
           }) */
 
      },
+
+
 
 
 
@@ -188,7 +190,111 @@ Page({
           wx.setStorageSync("cart", cart);
 
 
+     },
+
+
+     //商品的全选功能
+     itemAllcheck(){
+          //1. 获取data中的数据
+          let {cart,allCheck} = this.data
+          //2. 修改值
+          allCheck = !allCheck
+          //3. 循环循环修改cart数组中的选中状态
+          cart.forEach(v=>v.check = allCheck)
+          //4. 把修改后的值 填充回data或者缓存之中
+          this.setCart(cart)
+
+     },
+
+
+     async editNum(e){
+
+          
+          //1. 获取函数传递过来的数据
+          const {edit,id} = e.currentTarget.dataset
+          //2. 获取购物车数组
+          let {cart} = this.data;
+          //3. 找到需要修改的商品索引
+          const index = cart.findIndex(v=>v.goods_id===id)
+
+          //4. 开始修改数量
+
+/* 
+          //原生方法          
+          if(cart[index].num===1&&edit===-1){
+               wx.showModal({
+                    title: '提示',
+                    content: '你确定要删除该商品吗?',
+                    success :(res)=> {
+                    if (res.confirm) {
+                         cart.splice(index,1)
+                         this.setCart(cart)
+                    } else if (res.cancel) {
+                    console.log('用户点击取消')
+                    }
+                    }
+               })
+          }else{
+               cart[index].num+=edit
+          }
+
+ */
+
+
+          //经过封装之后的方法
+          if(cart[index].num===1&&edit===-1){
+               const res = await showModal({content:'你确定要删除该商品吗?'})
+
+               if (res.confirm) {
+                    cart.splice(index,1)
+                    this.setCart(cart)
+                 }
+
+          }else{
+               cart[index].num+=edit
+          }
+
+          
+
+
+          //5. 设置回缓存和data中
+          this.setCart(cart)
+
+     },
+
+     async toPay(){
+         /* 
+               商品结算页面
+               1.判断有没有收货地址
+               2. 判断用户有没有选购商品
+               3. 经过上面两个验证时，跳转支付页面
+          */
+         const {address,totalNum} = this.data
+     
+         //步骤一
+         if(!address.userName){
+               await showToast({title:'当前没有收获地址'})
+               return;
+         }
+
+         //步骤二
+         if(totalNum===0){
+              await showToast({title:"当前没有选购商品"})
+              return
+         }
+
+         ///步骤三
+         wx.navigateTo({
+              url: '/pages/pay/pay',
+         });
+
+
      }
+
+
+
+
+
 
 
 /* 
@@ -212,12 +318,33 @@ Page({
           5. 重新计算全选、总价、总数量，还有其他的。。。
 */
 
+/* 
+     全选和反选功能：
+     1. 给全选复选框绑定数据
+     2. 获取data中的  全选变量 allCheck
+     3. 直接取反  allCheck = !allCheck
+     4. 遍历购物车数组  让里面商品的 选中状态 跟随着 allCheck 的改变而改变
+     5. 把购物车数组和 allCheck 重新设置回 data 中，把购物车重新设置回缓存中
+*/
 
 
+/* 
+     商品数量的编辑
+     //1. 给 + - 按钮绑定同一个点击事件。区别的关键在于自定义属性
+     //2. 传递被点击的商品 id ，goods_id
+     //3. 获取到data中的购物车数组
+     //4. 直接修改商品对象的 num，
+          当num为0时，询问用户是否删除商品(用弹窗提示)，取消则num为0，确定则删除商品
+     //5. 把cart 数组重新设置回缓存中和data中，可以this.setCart完成
+*/
 
 
-
-
+/* 
+     商品结算页面
+     1.判断有没有收货地址
+     2. 判断用户有没有选购商品
+     3. 经过上面两个验证时，跳转支付页面
+*/
 
 
 

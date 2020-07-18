@@ -48,3 +48,60 @@ export const openSetting=()=>{
     })
 
 }
+
+
+
+//promise 形式的 showModal 
+export const showModal=({content})=>{
+    return new Promise((resolve,reject)=>{
+        wx.showModal({
+            title: '提示',
+            content: content,
+            success :(result)=> {
+                resolve(result)//成功的话就返回成功的结果
+            },
+            fail:(err)=>{
+                reject(err)
+            }
+       })
+    })
+
+}
+
+
+//promise 形式的 showToast 
+export const showToast=({title})=>{
+    return new Promise((resolve,reject)=>{
+        wx.showToast({
+            title: title,
+            icon: 'none',
+            duration: 1500,
+            mask: true,
+            success: (result)=>{
+                 resolve("showToast封装方法："+result)
+            },
+            fail: (err)=>{
+                reject(err)
+            }
+            
+       });
+    })
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

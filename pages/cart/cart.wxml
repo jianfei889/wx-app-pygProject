@@ -27,31 +27,44 @@
     <view class="cart_title">购物车</view>
 
     <view class="cart_main">
-        <view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
-            <!-- 复选框 -->
-                <view class="checkbox">
-                    <checkbox-group  bindchange="itemChange" data-id="{{item.goods_id}}">
-                        <checkbox checked="{{item.check}}"></checkbox>
-                    </checkbox-group>
-                </view>
-            <!-- 商品图片 -->
-                <navigator class="cart_img" target="" url="" hover-class="navigator-hover" open-type="navigate">
-                    <image src="{{item.goods_small_logo?item.goods_small_logo:'../../images/wuTu.jpg'}}" mode="widthFix"> </image>
-                </navigator>
-            <!-- 商品信息 -->
-                <view class="info_row">
-                    <view class="detail">{{item.goods_name}}</view>
-                    <view class="price_num">
-                        <view class="price">￥{{item.goods_price}}</view>
-                        <view class="num">
-                            <view class="edit" bindtap="edit_sub">-</view>
-                            <view class="goods_num">{{item.num}}</view>
-                            <view class="edit">+</view>
+        <!-- 当cart长度不等于0时，显示商品信息 -->
+        <block wx:if="{{cart.length!==0}}">
+            <view class="cart_item" 
+                wx:for="{{cart}}" 
+                wx:key="goods_id"
+                >
+                <!-- 复选框 -->
+                    <view class="checkbox">
+                        <checkbox-group  bindchange="itemChange" data-id="{{item.goods_id}}">
+                            <checkbox checked="{{item.check}}"></checkbox>
+                        </checkbox-group>
+                    </view>
+                <!-- 商品图片 -->
+                    <navigator class="cart_img" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                        <image src="{{item.goods_small_logo?item.goods_small_logo:'../../images/wuTu.jpg'}}" mode="widthFix"> </image>
+                    </navigator>
+                <!-- 商品信息 -->
+                    <view class="info_row">
+                        <view class="detail">{{item.goods_name}}</view>
+                        <view class="price_num">
+                            <view class="price">￥{{item.goods_price}}</view>
+                            <view class="num">
+                                <view class="edit" bindtap="editNum" data-id="{{item.goods_id}}" data-edit="{{-1}}">-</view>
+                                <view class="goods_num">{{item.num}}</view>
+                                <view class="edit" bindtap="editNum" data-id="{{item.goods_id}}" data-edit="{{1}}">+</view>
+                            </view>
                         </view>
                     </view>
-                </view>
 
-        </view>
+            </view>
+        </block>
+
+        <block wx:else>
+            <image class="" src="../../images/cartKong.jpg" mode="widthFix"></image>
+        </block>
+       
+
+
     </view>
 
 
@@ -63,7 +76,7 @@
 
     <!-- 全选 -->
     <view class="allSelected">
-        <checkbox-group >
+        <checkbox-group bindchange="itemAllcheck">
             <checkbox checked="{{allCheck}}">全选</checkbox>
         </checkbox-group>
     </view>
@@ -76,7 +89,7 @@
         <view>包含运费</view>
     </view>
     <!-- 结算 -->
-    <view class="pay_wrap">
+    <view class="pay_wrap" bindtap="toPay">
         结算（{{totalNum}}）
     </view>
 

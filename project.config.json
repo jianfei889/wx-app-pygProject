@@ -92,6 +92,13 @@
 					"id": -1,
 					"name": "购物车",
 					"pathName": "pages/cart/cart",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "支付页面",
+					"pathName": "pages/pay/pay",
 					"scene": null
 				}
 			]
