@@ -1,2 +1,91 @@
-<!--pages/pay/pay.wxml-->
-<text>pages/pay/pay.wxml</text>
+<!-- 收获地址 -->
+<view class="revise_address">
+
+    <!-- 当收获地址不存在时，显示按钮，收货地址栏因为没有数据所以也就不显示 -->
+    <!-- 当收收货地址存在，就显示详细信息 -->
+
+    <!-- 这里判断收获地址是否存在，因为 address是一个对象，而对象的值不管有没有值都是true,所以这里可以用address 的一个key去判断 -->
+    <!-- <view class="address_btn" wx:if="{{!address.userName}}">
+        <button type="primary" plain bindtap="getAddress">获取收获地址</button>
+    </view> -->
+
+    <view class="showAddress" ><!-- wx:else -->
+            <view class="userInfo" >
+                <view class="" > {{"收货人： "+address.userName}}</view>
+                <view class="" > {{address.provinceName+address.cityName+address.countyName+address.detailInfo}}</view>
+            </view>
+
+            <view class="userPhone" >
+                {{address.telNumber}}
+            </view>
+    </view>
+
+</view>
+
+<!-- 购物车内容 -->
+<view class="cart_content">
+    <view class="cart_title">购物车</view>
+
+    <view class="cart_main">
+        <!-- 当cart长度不等于0时，显示商品信息 -->
+        <block wx:if="{{cart.length!==0}}">
+            <view class="cart_item" 
+                wx:for="{{cart}}" 
+                wx:key="goods_id"
+                >
+                
+
+                <!-- 商品图片 -->
+                    <navigator class="cart_img" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                        <image src="{{item.goods_small_logo?item.goods_small_logo:'../../images/wuTu.jpg'}}" mode="widthFix"> </image>
+                    </navigator>
+                <!-- 商品信息 -->
+                    <view class="info_row">
+                        <view class="detail">{{item.goods_name}}</view>
+                        <view class="price_num">
+                            <view class="price">￥{{item.goods_price}}</view>
+                            <view class="num">
+                                <view class="goods_num">x{{item.num}}</view>
+                            </view>
+                        </view>
+                    </view>
+
+            </view>
+        </block>
+
+        <block wx:else>
+            <image class="" src="../../images/cartKong.jpg" mode="widthFix"></image>
+        </block>
+       
+
+
+    </view>
+
+
+</view>
+
+
+<!-- 购物车底部 -->
+<view class="footer_tool">
+
+   
+
+    <!-- 总价格 -->
+    <view class="price_wrap">
+        <view class="total_price">
+            合计：<text class="allPrice">￥{{totalPrice}}</text>
+        </view>
+        <view>包含运费</view>
+    </view>
+    <!-- 结算 -->
+    <view class="pay_wrap" bindtap="toPay">
+        支付（{{totalNum}}）
+    </view>
+
+</view>
+
+
+
+
+
+
