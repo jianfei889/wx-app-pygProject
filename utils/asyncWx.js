@@ -93,6 +93,28 @@ export const showToast=({title})=>{
 
 
 
+//promise 形式的 登录
+export const login=()=>{
+    return new Promise((resolve,reject)=>{
+        
+        wx.login({
+            timeout:10000,
+            success: (result)=>{
+                resolve(result) 
+            },
+            fail: (err)=>{
+                reject(err)
+            }
+       });
+
+    })
+
+}
+
+
+
+
+
 
 
 

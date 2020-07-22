@@ -3,7 +3,7 @@ Component({
      /**
       * 组件的属性列表
       */
-     properties: {//父传子。子组件接收父组件在引用时的参数
+     properties: {//子组件（tabs组件）接收父组件在引用时的参数。（tabs组件在被 -- 显示组件 -- 使用时需要tabs组件自己写好一个参数给   --父组件--）
           tabs:{
                type:Array,
                value:[]
@@ -17,7 +17,7 @@ Component({
 
      },
 
-     
+
 
      /**
       * 组件的方法列表

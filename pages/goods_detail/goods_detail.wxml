@@ -22,7 +22,7 @@
     <!-- 商品介绍 -->
     <view class="goods_name_row">
         <view class="goods_name">{{goodsObj.goods_name}}</view>
-        <view class="goods_collect">
+        <view class="goods_collect" >
             <!-- <view class="afler" > |  </view> -->
             <text class="iconfont icon-shoucang1" ></text>
             <view class="collect_text">收藏</view>

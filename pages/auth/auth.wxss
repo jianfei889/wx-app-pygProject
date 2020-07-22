@@ -1,1 +1,3 @@
-/* pages/auth/auth.wxss */
+button{
+    margin-top: 52rpx;
+}

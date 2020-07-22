@@ -13,21 +13,50 @@ import  regeneratorRuntime  from "../../lib/runtime/runtime.js"
           6. 弹出用户提示信息（加入购物车成功)
 */
 
+/* 
+     商品收藏功能
+     1. 页面onShow的时候，加载缓存中的商品收藏的数据
+     2. 判断当前商品是不是被收藏
+          1.是  改变页面的图标
+          2.否，什么都不做
+     3. 点击商品收藏按钮时，
+          1. 判断商品是否存在于缓存的数组中
+          2. 已经存在，把该商品的收藏删除点
+          3. 没收藏的话，把商品添加到收藏数组之中，存入到缓存中
+     
+*/
+
+
 
 Page({
 
      data: {
-          goodsObj:""
+          goodsObj:"",
+          //商品是否被收藏
+          isCollect:false
      },
 
      goodsInfo:{},
 
-     /**
-      * 生命周期函数--监听页面加载
-      */
+     
+     
+
      onLoad: function (options) {
-          const {goods_id} = options
+          // var pages =  getCurrentPages();
+          // let currentPage = pages[pages.length-1]
+          // let options2 = currentPage.options//页面参数
+          // console.log("2222:"+options2);
+          
+          
+          // const  {goods_id} = options2
+          
+
+          let {goods_id} = options
           this.getGoodsDetails(goods_id)
+          
+          
+
+
      },
 
      //获取商品详情的数据，这里使用es7的async数据
@@ -38,7 +67,17 @@ Page({
           
           this.goodsInfo = goodsObj//这里是预览图片用到的数据
 
+          //1. 获取缓存中的商品收藏的数组
+          // let collect = getStorageSync("collect")||[]//可能是一个空数组，对它进行转换
+          // 2.判断当前商品是否被收藏
+          // let isCollect = collect.some(v=>{
+          //      v.goods_id===goodsInfo.goods_id
+          // })
+
+
+
           this.setData({
+               //商品详情的富文本
                goodsObj:{
                     goods_name:goodsObj.goods_name,
                     goods_price:goodsObj.goods_price,
@@ -47,8 +86,11 @@ Page({
                     goods_introduce:goodsObj.goods_introduce.replace(/\.webp/g,'.jpg'),
                     pics:goodsObj.pics
 
-               }
+               },
+               // isCollect
           })
+
+
      },
 
 
