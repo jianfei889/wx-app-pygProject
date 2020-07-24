@@ -9,7 +9,7 @@ Page({
      },
 
      getUserInfo(e){
-          console.log(e);
+          // console.log(e);//打印用户信息
           
           const {userInfo} = e.detail//这里注意变量的名称，如果是userinfo会无效的。
           

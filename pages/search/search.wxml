@@ -1,2 +1,20 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class="search_row">
+    
+    <input  placeholder="请输入你要搜索的商品" bindinput="searchInput"  value="{{inputValue}}"> </input>
+
+    <!-- isBtn为true的时候，hidden  就会触发隐藏效果 -->
+    <button bindtap="cancel" hidden="{{isBtn}}">取消</button>
+    
+</view>
+  
+
+<view class="search_content">
+    <navigator url="/pages/goods_detail/goods_detail?goods_id={{item.goods_id}}"  class="search_item" wx:for="{{goods}}" wx:key="goods_id" >
+        {{item.goods_name}}
+    </navigator >
+
+    
+   
+
+
+</view>

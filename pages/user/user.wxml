@@ -80,9 +80,9 @@
             <text class="phone" >400-488-1000</text>
         </view>
 
-        <view class="info_item">
-            <text class="" >意见反馈</text>
-        </view>
+        <navigator class="info_item" url="/pages/feedback/feedback">
+                <text class="" >意见反馈</text>
+        </navigator>
         
         <view class="info_item">
             <text class="" >关于我们</text>

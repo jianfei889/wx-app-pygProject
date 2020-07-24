@@ -1,0 +1,6 @@
+<view class="img_wrap">
+
+    <image class="cover" src="{{src}}" />
+    <icon class="icon" type="clear" size="23" color="red"  > </icon>
+
+</view>

@@ -1,6 +1,6 @@
 <view class="search_input">
 
-    <navigator class="navigator_search"  url="../../pages/login/login"  hover-class="navigator-hover" open-type="navigate">
+    <navigator class="navigator_search"  url="/pages/search/search"  hover-class="navigator-hover" open-type="navigate">
        搜索
     </navigator>
     

@@ -1,2 +1,48 @@
-<!--pages/feedback/feedback.wxml-->
-<text>pages/feedback/feedback.wxml</text>
+<tabs tabs="{{tabs}}" bindtabsItemChange="tabsItemChange">
+        
+        <block wx:if="{{tabs[0].isActive}}"><!-- 当tabs的下标为零时，就展示其中的内容 -->
+            <view class="fd_main">
+
+               <view class="fd_title">问题的种类</view>
+
+               <view class="tis">
+                    <text >  功能建议  </text>
+                    <text >  购买遇到的问题  </text>
+                    <text >  性能问题  </text>
+                    <text >  其他  </text>
+                      
+               </view>
+
+               <view class="fd_content">
+                    <textarea value="{{textVal}}" bindinput="textInput" class="content_ta" placeholder="请描述一下您的问题"></textarea>
+                    <view class="fd_tool">
+
+                        <button bindtap="chooseImg">+</button>
+
+                        <!-- 对于数组之类的简单数组、简单数据时。 key值绑定可以时 *this  -->
+                        <view class="img_box" wx:for="{{chooseImgs}}" wx:key="*this" data-index="{{index}}" bindtap="removeImg"> 
+                            <!-- 这里是在父组件中向子组件传递数据 -->
+                            <UpImg  src="{{item}}"></UpImg>
+                        </view>
+                        
+                    </view>
+               </view>
+
+                <view class="form_btn">
+                    <button type="warn" bindtap="formSubmit">
+                        <icon  type="success_no_circle" size="23" color="white"></icon>
+                        提交
+                    </button>
+                </view>
+
+            </view> 
+        </block>
+
+        <block wx:elif="{{tabs[1].isActive}}"> 1 </block>
+
+</tabs>
+
+
+
+
+

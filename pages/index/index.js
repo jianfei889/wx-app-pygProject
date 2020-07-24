@@ -11,7 +11,9 @@ Page({
     
     catesList: [],// 导航数组
 
-    floorList:[]//楼层数组
+    floorList:[],//楼层数组
+
+    // query:""
 
   },
 
@@ -38,11 +40,14 @@ Page({
 
   //获取楼层数据
   getFloorList(){
+    
     request({ url: "https://api-hmugo-web.itheima.net/api/public/v1/home/floordata" })
       .then(result => {
+        
         this.setData({
-          floorList: result.data.message
+          floorList: result.data.message,
         })
+
       })
   },
 
@@ -68,7 +73,9 @@ Page({
     this.getCateList()
     this.getFloorList()
     
-  }
+
+  },
+
 
 
 

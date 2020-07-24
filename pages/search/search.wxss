@@ -1,1 +1,61 @@
-/* pages/search/search.wxss */
+page{
+    background-color: #dedede;
+    padding: 20rpx;
+}
+
+
+.search_row{
+
+    height: 90rpx;
+    display: flex;
+
+}
+
+
+.search_row input{
+    flex:1;
+    height:100%;
+    background-color: #fff;
+    padding-left: 30rpx;
+}
+
+
+.search_row button{
+    width: 160rpx !important;
+    height:100%;
+    font-size:28rpx;
+    text-align: center;
+    line-height: 60rpx;
+    background: #eee;
+    margin:0 0rpx 0 18rpx !important;
+}
+
+
+.search_content{
+    margin-top: 20rpx;
+    
+}
+
+
+.search_content .search_item{
+    align-items: center;
+    justify-content: center;
+    
+    /* display: flex;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:1 ; */
+
+    background-color: #fff;
+    border-bottom: 6rpx solid #e3e3e3;
+    font-size:32rpx;
+    padding: 25rpx 10rpx;
+    
+
+    /* 多出隐藏，不换行， 文字隐藏：星号作为省略*/
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}

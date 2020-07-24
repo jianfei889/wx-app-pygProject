@@ -1,0 +1,16 @@
+.img_wrap {
+  width: 100rpx;
+  height: 100rpx;
+  position: relative;
+  margin-left: 15rpx;
+}
+.img_wrap .cover {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+.img_wrap .icon {
+  position: absolute;
+  top: -25rpx;
+  right: -22rpx;
+}

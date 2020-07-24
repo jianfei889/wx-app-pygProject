@@ -68,7 +68,8 @@ Page({
       */
      onLoad: function (options) {
           // console.log(options);
-          this.queryParams.cid = options.cid;//这里是赋值的意思
+          this.queryParams.cid = options.cid||"";//这里是赋值的意思。如果是在商品列表跳转的话就用cid作为页面参数去跳转
+          this.queryParams.query = options.query||"";//如果是在首页跳转的话就用query跳转
 
           this.getGoodsList()
           
@@ -139,6 +140,7 @@ Page({
           
      },
 
+     // 下拉刷新事件
     onPullDownRefresh(){
          //1. 重置数组
          this.setData({
@@ -151,5 +153,6 @@ Page({
           //4. 数据请求回来之后就关闭正在刷新的动画，否则体验不好
           // 这里在请求处关闭.( wx.stopPullDownRefresh() ) 。在函数方法中使用
     }
+    
 
 })

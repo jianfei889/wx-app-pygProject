@@ -17,7 +17,7 @@
         -->
 
         <swiper-item  wx:for="{{swiperList}}" wx:key="goods_id" >
-            <navigator  url="" >
+            <navigator  url="/pages/goods_detail/goods_detail?goods_id={{item.goods_id}}" >
                 <image class="swiper_image" mode="widthFix" src="{{item.image_src}}"> </image>
             </navigator>
         </swiper-item>
@@ -26,12 +26,21 @@
 
   </view>
 
+
+
+
+
     <!-- 分类 -->
   <view class="index_cate">
-      <navigator wx:for="{{catesList}}" wx:key="name">
+      <!-- 跳转时因为分类页面存在于tabbar中，所以需要添加 open-type="switchTab" -->
+      <!-- 因为只有分类页面写了，而其他的没有内容，所以这里都是跳转分类页面，后续可以用页面参数跳转到具体页面 -->
+      <navigator wx:for="{{catesList}}" wx:key="name" url="/pages/catagory/catagory" open-type="switchTab">
           <image mode="widthFix" src="{{item.image_src}}"></image>
       </navigator>
   </view>
+
+
+
 
 <!-- 楼层，第一楼 时尚女装 -->
 <view class="index_floor">
@@ -43,8 +52,16 @@
         </view>
 
         <view class="floor_list">
-            <navigator wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="name" >
-                <image class="" src="{{item2.image_src}}" mode="{{index2===0?'widthFix':'scaleToFill'}}" ></image>
+
+            <!-- 因为这里的url路径为：/pages/goods_list?query=服饰  跳转路径不符合项目的页面路径。  所以跳转不成功。后续可以通过后台服务端去修改路径即可。 -->
+            <navigator 
+                wx:for="{{item1.product_list}}" 
+                wx:for-item="item2"
+                 wx:for-index="index2" 
+                 wx:key="name" 
+                 url="{{item2.navigator_url}}"
+              >
+                <image url="/pages/catagory/catagory" class="" src="{{item2.image_src}}" mode="{{index2===0?'widthFix':'scaleToFill'}}" ></image>
             </navigator>
               
         </view>
